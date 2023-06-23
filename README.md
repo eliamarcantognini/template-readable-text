@@ -1,3 +1,18 @@
+
+# HOWTO:
+
+## 1
+
+Write your content in content.md using markdown syntax.
+
+## 2
+
+Use Markdown All In One (VSCode extension) to print .md to html.
+
+## 3
+
+Manipulate the generated HTML like this:
+
 Add at the end of the head tag:  
 ```
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -28,5 +43,10 @@ Add at the beginning of the body tag:
 
 ```
 
+## 4
 
-Use Markdown All In One to print .md to html.
+Rename content.html to index.html and activate github pages.
+
+## 5
+
+Enjoy your content.
