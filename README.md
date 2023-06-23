@@ -50,3 +50,8 @@ Rename content.html to index.html and activate github pages.
 ## 5
 
 Enjoy your content.
+
+
+# TODO:
+
+- Automatize all steps above with Github Actions!
