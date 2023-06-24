@@ -5,6 +5,7 @@ require 'nokogiri'
 
 content = CommonMarker.render_html(File.read("content.md"), :UNSAFE)
 title = Nokogiri::HTML.parse(content).css('h1').text
+puts title
 
 fileHtml = File.new("build/index.html", "w+")
 fileHtml.write(<<~EOH
