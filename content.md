@@ -1,11 +1,11 @@
-# H1: Example use
+# Example use
 <span class="ut">Subtitle</span>
 
-## H2: Title 2
+## Title 2
 
 Paragraph
 
-### H3: Title 3
+### Title 3
 
 Paragraph with:
 
@@ -14,6 +14,6 @@ Paragraph with:
 
 Eheh.
 
-#### H4: Title 4
+#### Title 4
 
-<span style="color: red">Custom styke!</span>
+<span style="color: red">Custom style!</span>
