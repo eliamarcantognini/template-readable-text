@@ -9,8 +9,8 @@ Paragraph one, simple text.
 
 Paragraph with:
 
-- Bulleted
-- List
+- Bulleted;
+- List.
 
 Eheh.
 
