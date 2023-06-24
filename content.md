@@ -3,7 +3,7 @@
 
 ## Title 2
 
-Paragraph
+Paragraph one, simple text.
 
 ### Title 3
 
