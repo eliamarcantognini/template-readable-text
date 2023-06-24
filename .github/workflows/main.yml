@@ -22,7 +22,7 @@ jobs:
         gem install commonmarker
         gem install nokogiri
     - name: run script
-      run: ruby ./script.rb
+      run: ruby -c template-readable-text/script.rb
     - name: push new index file
       run: |
         git config user.name github-actions
