@@ -3,6 +3,8 @@
 require "commonmarker"
 require 'nokogiri'
 
+puts Dir.pwd
+
 content = CommonMarker.render_html(File.read("content.md"), :UNSAFE)
 title = Nokogiri::HTML.parse(content).css('h1').text
 puts title
