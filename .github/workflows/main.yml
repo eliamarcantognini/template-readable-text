@@ -11,7 +11,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        path: repo
         ref: main
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1.152.0
@@ -23,12 +22,12 @@ jobs:
         gem install nokogiri
         ls -ahR
     - name: Run Ruby script
-      run: ruby -c repo/script.rb
+      run: ruby -c script.rb
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: site
-        path: repo/build
+        path: build
       
   deploy-artifact-to-pages:
     concurrency: ci-${{ github.ref }}
