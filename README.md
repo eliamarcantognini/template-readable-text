@@ -24,9 +24,8 @@ Add at the end of the head tag:
         
 ```
 
-Add at the beginning of the body tag:  
+And, if you want the buttons to resize text, add at the beginning of the body tag:  
 ```
-
     <div id="container-floating">
         <div id="floating-button" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#floatingnav"  data-placement="left">
           <i id="legend" class="fa fa-font fa-stack-1x fa-inverse fa-2x" style="top:12px" role="button" tabindex="0"></i>
@@ -40,7 +39,6 @@ Add at the beginning of the body tag:
             </div>
         </div>
     </div>
-
 ```
 
 ## 4
