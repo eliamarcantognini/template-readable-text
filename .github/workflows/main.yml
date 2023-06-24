@@ -11,6 +11,7 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3.5.3
       with:
+        ref: main
         path: ${{ github.event.repository.name }}
     - name: setup Ruby
       uses: ruby/setup-ruby@v1.152.0
