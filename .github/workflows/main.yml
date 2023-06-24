@@ -22,13 +22,15 @@ jobs:
       run: |
         gem install commonmarker
         gem install nokogiri
+        ls -ah
     - name: run script
       run: |
         ruby -c ${{ github.event.repository.name }}/script.rb
+        cd ${{ github.event.repository.name }}
     - name: deploy to pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: ${{ github.event.repository.name }}/build
+        folder: build
         branch: gh-pages
         token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
