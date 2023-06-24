@@ -23,7 +23,7 @@ jobs:
         gem install nokogiri
         ls -ahR
     - name: Run Ruby script
-      run: ruby -c script.rb
+      run: ruby -c repo/script.rb
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
