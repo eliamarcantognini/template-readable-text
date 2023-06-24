@@ -24,6 +24,11 @@ jobs:
         ls -ahR
     - name: Run Ruby script
       run: ruby -c repo/script.rb
+    - name: log dir
+      run: |
+        echo 'log dir'
+        pwd
+        ls -ahR ./
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
