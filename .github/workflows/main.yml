@@ -5,31 +5,49 @@ on:
       main
   
 jobs:
-  render-md-to-html-and-deploy:
+  render-md-to-html-and-upload-artifact:
     runs-on: ubuntu-20.04
     steps:
-    - name: checkout
-      uses: actions/checkout@v3.5.3
+    - name: Checkout
+      uses: actions/checkout@v3
       with:
         ref: main
-        path: repo
-    - name: setup Ruby
+    - name: Setup Ruby
       uses: ruby/setup-ruby@v1.152.0
       with:
         ruby-version: '3.2.2'
-    - name: setup libs
+    - name: Setup libs
       run: |
         gem install commonmarker
         gem install nokogiri
         ls -ahR
-    - name: run script
+    - name: Run Ruby script
       run: ruby -c repo/script.rb
-    - name: deploy to pages
-      uses: JamesIves/github-pages-deploy-action@v4
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
       with:
-        folder: repo/build
-        branch: gh-pages
-        token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
+        name: site
+        path: build
+      
+  deploy-artifact-to-pages:
+    concurrency: ci-${{ github.ref }}
+    needs: [render-md-to-html-and-upload-artifact]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: site
+      - name: deploy to pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: site
+          branch: gh-pages
+          token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
     
       
