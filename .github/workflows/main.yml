@@ -28,7 +28,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: site
-        path: repo/build
+        path: build
       
   deploy-artifact-to-pages:
     concurrency: ci-${{ github.ref }}
