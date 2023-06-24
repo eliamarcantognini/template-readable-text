@@ -10,8 +10,6 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v3
-      with:
-        path: template-readable-text
     - name: setup Ruby
       uses: ruby/setup-ruby@v1.152.0
       with:
@@ -26,7 +24,7 @@ jobs:
     - name: deploy to pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: '../build/' 
+        folder: template-readable-text/build
         branch: gh-pages
         token: ${{ secrets.GITHUB_TOKEN }}
         
