@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: setup Ruby
       uses: ruby/setup-ruby@v1.152.0
+      with:
+        ruby-version: '3.2.2'
     - name: setup libs
       run: |
         gem install commonmarker
