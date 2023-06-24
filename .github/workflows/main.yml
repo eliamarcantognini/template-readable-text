@@ -24,7 +24,6 @@ jobs:
     - name: run script
       run: |
         ruby -c ${{ github.event.repository.name }}/script.rb
-        cd ${{ github.event.repository.name }}
     - name: deploy to pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
