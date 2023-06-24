@@ -23,13 +23,11 @@ jobs:
         gem install nokogiri
         ls -ahR
     - name: run script
-      run: |
-        ruby -c repo/script.rb
-        cd repo
+      run: ruby -c repo/script.rb
     - name: deploy to pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: build
+        folder: repo/build
         branch: gh-pages
         token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
