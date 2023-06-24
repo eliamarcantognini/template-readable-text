@@ -45,16 +45,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
-          path: repo
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
           name: site
-          path: repo/site
+          path: site
       - name: deploy to pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: repo/build
+          folder: build
           branch: gh-pages
           token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
