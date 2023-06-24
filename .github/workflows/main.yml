@@ -23,7 +23,8 @@ jobs:
         gem install nokogiri
         ls -ahR
     - name: Run Ruby script
-      run: ruby repo/script.rb
+      working-directory: repo
+      run: ruby script.rb
     - name: log dir
       run: |
         echo 'log dir'
