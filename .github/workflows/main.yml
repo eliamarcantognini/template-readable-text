@@ -12,6 +12,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: main
+        path: repo
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1.152.0
       with:
@@ -23,11 +24,12 @@ jobs:
         ls -ahR
     - name: Run Ruby script
       run: ruby -c script.rb
+      working-directory: repo
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: site
-        path: build
+        path: repo/build
       
   deploy-artifact-to-pages:
     concurrency: ci-${{ github.ref }}
