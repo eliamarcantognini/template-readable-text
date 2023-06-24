@@ -40,15 +40,16 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
+          path: art-repo
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
-          path: site
           name: site
+          path: art-repo/site
       - name: deploy to pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: site
+          folder: art-repo/site
           branch: gh-pages
           token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
