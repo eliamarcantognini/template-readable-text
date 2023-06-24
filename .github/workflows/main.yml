@@ -25,33 +25,12 @@ jobs:
     - name: Run Ruby script
       run: ruby -c script.rb
       working-directory: repo
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+    - name: deploy to pages
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        name: site
-        path: repo/build
-      
-  deploy-artifact-to-pages:
-    concurrency: ci-${{ github.ref }}
-    needs: [render-md-to-html-and-upload-artifact]
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: main
-          path: art-repo
-      - name: Download Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: site
-          path: art-repo/site
-      - name: deploy to pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: art-repo/site
-          branch: gh-pages
-          token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
+        folder: repo/site
+        branch: gh-pages
+        token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
     
       
