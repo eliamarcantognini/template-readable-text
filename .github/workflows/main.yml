@@ -28,7 +28,7 @@ jobs:
       with:
         folder: ${{ github.event.repository.name }}/build
         branch: gh-pages
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
     
       
