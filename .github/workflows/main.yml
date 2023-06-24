@@ -8,20 +8,21 @@ jobs:
   setup-ruby-env:
     runs-on: ubuntu-20.04
     steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        path: template-readable-text
     - name: setup Ruby
       uses: ruby/setup-ruby@v1.152.0
       with:
         ruby-version: '3.2.2'
+        working-directory: template-readable-text
     - name: setup libs
       run: |
         gem install commonmarker
         gem install nokogiri
-    - name: checkout
-      uses: actions/checkout@v3
     - name: run script
-      run: |
-        cd template-readable-text
-        ruby ./script.rb
+      run: ruby ./script.rb
     - name: push new index file
       run: |
         git config user.name github-actions
