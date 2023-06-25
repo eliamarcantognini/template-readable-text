@@ -50,7 +50,7 @@ jobs:
         with:
           folder: site
           branch: gh-pages
-          # token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
+          token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
     
       
