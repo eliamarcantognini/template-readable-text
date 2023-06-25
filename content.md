@@ -16,4 +16,4 @@ Eheh.
 
 #### Title 4
 
-<span style="color: red">Custom style!</span>
+<span style="color: red">Custom style! Use span for that.</span>
