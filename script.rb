@@ -6,7 +6,7 @@ require 'nokogiri'
 puts Dir.pwd
 
 content = CommonMarker.render_html(File.read("content.md"), :UNSAFE)
-title = Nokogiri::HTML.parse(content).css('h1').text
+title = Nokogiri::HTML.parse(content).css('h1')[0].text
 puts title
 
 fileHtml = File.new("build/index.html", "w+")
