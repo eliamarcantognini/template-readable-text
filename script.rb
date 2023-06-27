@@ -1,6 +1,5 @@
 # #!/usr/bin/env ruby
 
-require 'nokogiri'
 require 'redcarpet'
 
 html_options = {
@@ -18,13 +17,37 @@ md_options = {
     autolink: true,
     no_intra_emphasis: true,
 }
-toc = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC.new(nesting_level: 2))
-    .render(File.read("content.md"))
+
+def process_file(file_path)
+    toc = false
+    title = 'Template by eliamarcantognini.it'
+    # Read the file contents into a variable
+    file_contents = File.read(file_path)
+    # Check if the file contains {TOC}
+    toc = file_contents.include?('{TOC}')
+    # Remove {TOC} from the file contents
+    if toc
+        file_contents = file_contents.gsub('{TOC}', '') 
+    end
+    # Check if the file contains {TITLE}
+    if file_contents.include?('{TITLE}')
+      # Extract the title from the file contents
+      title = file_contents.match(/\{TITLE\}\s*(.+)$/)[1]
+      # Remove {TITLE} and {/TITLE} from the file contents
+      file_contents = file_contents.gsub(/\{TITLE\}.+\{\/TITLE\}/m, '')
+    end
+    # Return the toc flag, title, and the temporary file path
+    return toc, title, file_contents
+  end
+
+toc, title, file_content = process_file('content.md')
+if toc
+    tocContent = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC.new(nesting_level: 2))
+        .render(file_content)
+end
 content = Redcarpet::Markdown.new(
     Redcarpet::Render::HTML.new(render_options = html_options), extensions = md_options)
-    .render(File.read("content.md"))
-
-title = Nokogiri::HTML.parse(content).css('h1')[0].text
+    .render(file_content)
 
 fileHtml = File.new("build/index.html", "w+")
 fileHtml.write(<<~EOH
@@ -64,7 +87,7 @@ fileHtml.write(<<~EOH
             </div>
         </div>
     </div>
-    #{toc}
+    #{if toc==true then tocContent end}
     #{content}
 </body>
 </html>
