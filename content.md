@@ -1,4 +1,4 @@
-{TOC}
+{TOC}  
 {TITLE} Template use
 
 # Example use
