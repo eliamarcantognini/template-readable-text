@@ -1,3 +1,6 @@
+{TOC}
+{TITLE} Template use
+
 # Example use
 <span class="ut">Subtitle</span>
 

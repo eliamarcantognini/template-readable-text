@@ -5,4 +5,7 @@ The workflow will automatically push to gh-pages branch the .html output rendere
 You can access your new site from <github-username.github>.io/<repo-name>.  
 Feel free to use this template.
 
+If you need a Table of Content just add "{TOC}" at the beginning of the file.  
+If you want to customize your page title just add "{TITLE} Your title" at the beginning of the file.
+
 An example use is visible at content.md!
