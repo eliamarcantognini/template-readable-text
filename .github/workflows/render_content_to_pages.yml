@@ -18,10 +18,7 @@ jobs:
       with:
         ruby-version: '3.2.2'
     - name: Setup libs
-      run: |
-        gem install commonmarker
-        gem install nokogiri
-        ls -ahR
+      run: gem install redcarpet
     - name: Run Ruby script
       working-directory: repo
       run: ruby script.rb
@@ -52,6 +49,3 @@ jobs:
           branch: gh-pages
           token: ${{ secrets.MD_TO_PAGES_ACTION_TOKEN }}
         
-    
-      
-      
