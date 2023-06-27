@@ -1,13 +1,30 @@
 # #!/usr/bin/env ruby
 
-require "commonmarker"
 require 'nokogiri'
+require 'redcarpet'
 
-puts Dir.pwd
+html_options = {
+    with_toc_data: true,
+    prettify: true,
+}
+md_options = {
+    tables: true,
+    strikethrough: true,
+    superscript: true,
+    underline: true,
+    highlight: true,
+    quote: true,
+    footnotes: true,
+    autolink: true,
+    no_intra_emphasis: true,
+}
+toc = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC.new(nesting_level: 2))
+    .render(File.read("content.md"))
+content = Redcarpet::Markdown.new(
+    Redcarpet::Render::HTML.new(render_options = html_options), extensions = md_options)
+    .render(File.read("content.md"))
 
-content = CommonMarker.render_html(File.read("content.md"), :UNSAFE)
 title = Nokogiri::HTML.parse(content).css('h1')[0].text
-puts title
 
 fileHtml = File.new("build/index.html", "w+")
 fileHtml.write(<<~EOH
@@ -47,6 +64,7 @@ fileHtml.write(<<~EOH
             </div>
         </div>
     </div>
+    #{toc}
     #{content}
 </body>
 </html>
