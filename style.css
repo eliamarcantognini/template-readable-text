@@ -6,6 +6,10 @@ h1 {
   margin-bottom: 0;
 }
 
+h1:first-of-type {
+  margin-top: 0;
+}
+
 h2 {
   color: #271784;
   font-weight: bold;
