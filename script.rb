@@ -27,14 +27,14 @@ def process_file(file_path)
     toc = file_contents.include?('{TOC}')
     # Remove {TOC} from the file contents
     if toc
-        file_contents = file_contents.gsub('{TOC}', '') 
+        file_contents = file_contents.gsub(/\{TOC\}/, '')
     end
     # Check if the file contains {TITLE}
     if file_contents.include?('{TITLE}')
       # Extract the title from the file contents
       title = file_contents.match(/\{TITLE\}\s*(.+)$/)[1]
-      # Remove {TITLE} and {/TITLE} from the file contents
-      file_contents = file_contents.gsub(/\{TITLE\}.+\{\/TITLE\}/m, '')
+      # Remove {TITLE} and all its line from the file contents
+      file_contents = file_contents.gsub(/\{TITLE\}.*\n/, '')
     end
     # Return the toc flag, title, and the temporary file path
     return toc, title, file_contents
